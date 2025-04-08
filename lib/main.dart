@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grid_play/screens/game_local.dart';
+import 'package:grid_play/screens/selecionar_modo_jogo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const GameLocalPage(),
+      home: const SelecionarModoJogo(),
     );
   }
 }

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:grid_play/tabuleiro.dart';
 
 class GameLocalPage extends StatefulWidget {
-  const GameLocalPage({super.key});
+  final  jogadores;
+
+   GameLocalPage({super.key, required this.jogadores});
 
   @override
   State<GameLocalPage> createState() => _GameLocalPageState();
@@ -11,7 +13,6 @@ class GameLocalPage extends StatefulWidget {
 
 class _GameLocalPageState extends State<GameLocalPage> {
   void atualizarTela() {
-    print(vencedoresPosition);
     setState(() {});
   }
 
@@ -35,10 +36,10 @@ class _GameLocalPageState extends State<GameLocalPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Stack(
-                  alignment: Alignment(0, -1.7),
+                  alignment: Alignment(0, -2),
                   children: [
                     Container(
-                      padding: EdgeInsets.all(3),
+                      padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           color: Color.fromARGB(255, 25, 14, 81),
                           border: Border.all(
@@ -69,8 +70,11 @@ class _GameLocalPageState extends State<GameLocalPage> {
                       child: Container(
                           width: 60,
                           height: 60,
-                          color: Colors.red,
-                          child: Icon(Icons.person)),
+                          color: Color.fromARGB(255, 55, 35, 156),
+                          child: Icon(
+                            Icons.person,
+                            color: Colors.white70,
+                          )),
                     )
                   ],
                 ),
@@ -78,10 +82,10 @@ class _GameLocalPageState extends State<GameLocalPage> {
                   width: 20,
                 ),
                 Stack(
-                  alignment: Alignment(0, -1.7),
+                  alignment: Alignment(0, -2),
                   children: [
                     Container(
-                      padding: EdgeInsets.all(3),
+                      padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           color: Color.fromARGB(255, 25, 14, 81),
                           border: Border.all(
@@ -112,13 +116,40 @@ class _GameLocalPageState extends State<GameLocalPage> {
                       child: Container(
                           width: 60,
                           height: 60,
-                          color: Colors.red,
-                          child: Icon(Icons.person)),
+                          color: Color.fromARGB(255, 55, 35, 156),
+                          child: Icon(
+                            Icons.person,
+                            color: Colors.white70,
+                          )),
                     )
                   ],
                 )
               ],
             ),
+            (vencedor.isEmpty)
+                ? Column(
+                    children: [
+                      Text(
+                        "Vez de:",
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                      (vezDe == "X")
+                          ? Icon(
+                              Icons.close_rounded,
+                              color: Colors.red,
+                              size: 65,
+                            )
+                          : Icon(
+                              Icons.circle_outlined,
+                              color: Colors.green,
+                              size: 70,
+                            )
+                    ],
+                  )
+                : Text(
+                    "Hélio venceu o jogo!",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.width - 40,
